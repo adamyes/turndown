@@ -53,7 +53,6 @@
     "build-umd": "rollup -c config/rollup.config.umd.mjs && rollup -c config/rollup.config.browser.umd.mjs",
     "build-iife": "rollup -c config/rollup.config.iife.mjs",
     "build-test": "rollup -c config/rollup.config.test.mjs",
-    "prepare": "npm run build",
     "test": "npm run build && npm run build-test && standard ./src/**/*.js && node test/internals-test.js && node test/turndown-test.js"
   }
 }
