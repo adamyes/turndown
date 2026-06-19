@@ -8,15 +8,12 @@ export default function Node (node, options) {
   return node
 }
 
-function isBlank (node) {
-  return (
-    !isVoid(node) &&
-    !isMeaningfulWhenBlank(node) &&
-    /^\s*$/i.test(node.textContent) &&
-    !hasVoid(node) &&
-    !hasMeaningfulWhenBlank(node)
-  )
-}
+  function nType(node) {
+     return node.getAttribute && (node.getAttribute('data-type') || node.getAttribute('data-category'))?.toLowerCase()
+  }
+  function isBlank(node) {
+    return !isVoid(node) && !isMeaningfulWhenBlank(node) && /^\s*$/i.test(node.textContent) && !hasVoid(node) && !hasMeaningfulWhenBlank(node) && !nType(node) == "bonus";
+  }
 
 function flankingWhitespace (node, options) {
   if (node.isBlock || (options.preformattedCode && node.isCode)) {
